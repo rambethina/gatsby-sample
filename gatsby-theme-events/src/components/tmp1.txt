@@ -1,0 +1,38 @@
+    <div>
+      <div className={containerStyles.header}>Top</div>
+      <div className={themeStyles.row}>
+        <div className={`${themeStyles.sidebar} ${themeStyles.column}`>
+          <div className={themeStyles.sidebar-header}>
+            <h1>Sidebar Nav</h1>
+          </div>
+          <ul className={themeStyles.sidebar-nav}>
+
+            {mapKeys.map(key => (
+              <li key={key} className={themeStyles.has-ul}>
+                {key}
+                {/* {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />} */}
+                {/* <button className={containerStyles.collapser}>
+                  {parsedData.get(key).children.length > 0 ? (
+                    <OpenedSvg />
+                  ) : (
+                    <ClosedSvg />
+                  )}
+                </button> */}
+                <a href="#">{key}</a>
+                <ul className={themeStyles.sub-ul}>
+                  {parsedData.get(key).children.map(child => (
+                    <li key={child.displayText}>
+                      
+                      <a href="#">{child.displayText}</a>
+                      </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className={containerStyles.rightcolumn}>{children}</div>
+      </div>
+      <div className={containerStyles.footer}>footer</div>
+    </div>

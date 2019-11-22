@@ -1,0 +1,48 @@
+import React from "react";
+import containerStyles from "./container.module.css";
+import themeStyles from "./theme.css";
+import ClosedSvg from "./images/closed";
+import OpenedSvg from "./images/opened";
+import { element } from "prop-types";
+
+export default ({ children, edges, parsedData }) => {
+  const mapKeys = Array.from(parsedData.keys());
+  mapKeys.map(key => parsedData.get(key));
+  return (
+    <div>
+      <div className={containerStyles.header}>Top</div>
+      <div className={themeStyles.row}>
+        <div className={themeStyles.sidebar}>
+          <div className={themeStyles.sidebar_header}>
+            <h1>Sidebar Nav</h1>
+          </div>
+          <ul className={themeStyles.sidebar_nav}>
+            {mapKeys.map(key => (
+              <li key={key} className={themeStyles.has_ul}>
+                {key}
+                {/* {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />} */}
+                {/* <button className={containerStyles.collapser}>
+                {parsedData.get(key).children.length > 0 ? (
+                  <OpenedSvg />
+                ) : (
+                  <ClosedSvg />
+                )}
+              </button> */}
+                <a href="#">{key}</a>
+                <ul className={themeStyles.sub_ul}>
+                  {parsedData.get(key).children.map(child => (
+                    <li key={child.displayText}>
+                      <a href="#">{child.displayText}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={containerStyles.rightcolumn}>{children}</div>
+      </div>
+      <div className={containerStyles.footer}>footer</div>
+    </div>
+  );
+};

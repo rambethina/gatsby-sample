@@ -1,0 +1,24 @@
+          <ul className={themeStyles.sidebar-nav}>
+            {mapKeys.map(key => (
+              <li key={key} className={themeStyles.has-ul}>
+                {key}
+                {/* {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />} */}
+                {/* <button className={containerStyles.collapser}>
+                  {parsedData.get(key).children.length > 0 ? (
+                    <OpenedSvg />
+                  ) : (
+                    <ClosedSvg />
+                  )}
+                </button> */}
+                <a href="#">{key}</a>
+                <ul className={themeStyles.sub-ul}>
+                  {parsedData.get(key).children.map(child => (
+                    <li key={child.displayText}>
+                      
+                      <a href="#">{child.displayText}</a>
+                      </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
